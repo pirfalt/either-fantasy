@@ -1,2 +1,4 @@
-either-fantasy
-==============
+# either-fantasy
+
+A fantasyland either implementation
+

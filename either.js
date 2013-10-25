@@ -22,6 +22,16 @@ Either.fromArgs = function(args) {
 		: Either.of(args[1])
 }
 
+Either.safe = function(fn) {
+	return function safe() {
+		try {
+			return Either.of(fn.apply(this, arguments))
+		} catch (e) {
+			return Either.Left(e)
+		}
+	}
+}
+
 var p = Either.prototype
 p.chain = function(fn) {
 	// Should test if fn returns a Either

@@ -4,7 +4,7 @@ function Either(val, left) {
 	if (!(this instanceof Either))
 		return new Either(val)
 
-	this.left = left
+	this.left = left ? true : false
 	this.value = val
 }
 
@@ -14,6 +14,12 @@ Either.of = Either.Right = function(val) {
 
 Either.Left = function(val) {
 	return new Either(val, true)
+}
+
+Either.fromArgs = function(args) {
+	return args[0]
+		? Either.Left(args[0])
+		: Either.of(args[1])
 }
 
 var p = Either.prototype

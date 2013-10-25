@@ -1,6 +1,6 @@
 {
   "name": "either-fantasy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Fantasyland either implementation",
   "main": "either.js",
   "scripts": {

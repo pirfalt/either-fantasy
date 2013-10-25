@@ -1,0 +1,21 @@
+{
+  "name": "either-fantasy",
+  "version": "0.0.0",
+  "description": "Fantasyland either implementation",
+  "main": "either.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pirfalt/either-fantasy.git"
+  },
+  "keywords": [
+    "either",
+    "fantasy"
+  ],
+  "author": "Emil Pirfalt",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "gitHead": "2e454a10158db03fcb0c38fc60ba0169a1a30b62"
+}

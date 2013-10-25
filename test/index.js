@@ -39,3 +39,20 @@ test('#safe', function(t) {
 	t.equal(either.safe(bad)().value, 'Bad', 'Captures throws')
 	t.equal(either.safe(bad)().left, true, 'Captures throws in left')
 })
+
+test('#fromCb', function(t) {
+	t.plan(4)
+
+	var c = cont.of(value)
+	var e = cont.error('error')
+
+	either.fromCb(c)(function(ei) {
+		t.equal(ei.value, value)
+		t.equal(ei.left, false)
+	})
+
+	either.fromCb(e)(function(ei) {
+		t.equal(ei.value, 'error')
+		t.equal(ei.left, true)
+	})
+})

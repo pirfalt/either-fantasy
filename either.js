@@ -8,17 +8,17 @@ function Either(val, left) {
 	this.value = val
 }
 
-Either.of = Either.Right = function(val) {
+Either.of = Either.right = function(val) {
 	return new Either(val, false)
 }
 
-Either.Left = function(val) {
+Either.left = function(val) {
 	return new Either(val, true)
 }
 
 Either.fromArgs = function(args) {
 	return args[0]
-		? Either.Left(args[0])
+		? Either.left(args[0])
 		: Either.of(args[1])
 }
 
@@ -27,8 +27,18 @@ Either.safe = function(fn) {
 		try {
 			return Either.of(fn.apply(this, arguments))
 		} catch (e) {
-			return Either.Left(e)
+			return Either.left(e)
 		}
+	}
+}
+
+Either.fromCb = function(nodeContinuation) {
+	return function singleValueContinuation(singleValueCallback) {
+		return nodeContinuation(function nodeCallback(err, val) {
+			if (err)
+				return singleValueCallback( Either.left(err) )
+			return singleValueCallback( Either.of(val) )
+		})
 	}
 }
 
